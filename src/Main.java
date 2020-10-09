@@ -84,36 +84,7 @@ public class Main extends PApplet {
 		System.out.println(""+g);
 		System.out.println(""+b);
 	}
-	
-	/*public void initServer () {
-		
-		new Thread (
-				() -> {
-					
-					try {
-						
-						
-			            
-						serverSocket = new ServerSocket (5001);
-						System.out.println("esperando conexi�n");
-						socket = serverSocket.accept();
-						System.out.println("Conect�");
-						
-						InputStream is = socket.getInputStream();
-						InputStreamReader isr = new InputStreamReader (is);
-						read = new BufferedReader (isr);
-						
-						OutputStream os = socket.getOutputStream();
-						OutputStreamWriter osw = new OutputStreamWriter (os);
-						write = new BufferedWriter (osw);
-						
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-				).start();
-	}*/
+
 
 	
 	

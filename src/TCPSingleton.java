@@ -33,9 +33,9 @@ public class TCPSingleton extends Thread{
     private Main main;
     private int posX = 250;
     private int posY = 250;
-    private int rs = 1;
-    private int gs = 1;
-    private int bs = 1;
+    private int rs;
+    private int gs;
+    private int bs;
    
     
     
@@ -64,9 +64,9 @@ public class TCPSingleton extends Thread{
             System.out.println(""+ipLocal);*/
             
 			serverSocket = new ServerSocket (5001);
-			System.out.println("esperando conexi�n");
+			System.out.println("esperando conexión");
 			socket = serverSocket.accept();
-			System.out.println("Conect�");
+			System.out.println("Conectó");
 			
 			InputStream is = socket.getInputStream();
 			InputStreamReader isr = new InputStreamReader (is);
@@ -103,16 +103,16 @@ public class TCPSingleton extends Thread{
 					
 					switch (move.getMove()) {
 					case "up":
-						main.movimiento(posX, posY -= 2);
+						main.movimiento(posX, posY -= 4);
 						break;
 					case "down":
-						main.movimiento(posX, posY += 2);
+						main.movimiento(posX, posY += 4);
 						break;
 					case "left":
-						main.movimiento(posX -= 2, posY);
+						main.movimiento(posX -= 4, posY);
 						break;
 					case "right":
-						main.movimiento(posX += 2, posY);
+						main.movimiento(posX += 4, posY);
 						break;
 					}
 					break;
@@ -120,8 +120,11 @@ public class TCPSingleton extends Thread{
 				case "color":
 					
 					color = gson.fromJson(line, Color.class);
+					rs = (int) (Math.random()*255);
+					gs = (int) (Math.random()*255);
+					bs = (int) (Math.random()*255);
 					
-					main.colors(rs *= (int) Math.random()*255, gs *= (int) Math.random()*255, bs *= (int) Math.random()*255);
+					main.colors(rs , gs , bs);
 					System.out.println(""+rs);
 					System.out.println(""+gs);
 					System.out.println(""+bs);
@@ -145,20 +148,6 @@ public class TCPSingleton extends Thread{
 		this.pos = pos;
 	}
     
-
-  /*  public void sendMessage (String msn){
-        new Thread (
-                () -> {
-                    try {
-                        write.write(msn+"\n");
-                        write.flush();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                }
-        ).start();
-    }*/
 
     
 }
