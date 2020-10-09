@@ -13,6 +13,7 @@ import java.net.Socket;
 
 import com.google.gson.Gson;
 
+import model.Color;
 import model.Generic;
 import model.Move;
 import model.Posicion;
@@ -28,12 +29,13 @@ public class TCPSingleton extends Thread{
     private BufferedWriter write;
     private Posicion pos;
     private Move move;
+    private Color color;
     private Main main;
     private int posX = 250;
     private int posY = 250;
-    private int rs = (int) Math.random()*255;
-    private int gs = (int) Math.random()*255;
-    private int bs = (int) Math.random()*255;
+    private int rs = 1;
+    private int gs = 1;
+    private int bs = 1;
    
     
     
@@ -84,9 +86,6 @@ public class TCPSingleton extends Thread{
 				switch (generic.getType()) {
 				case "posicion":
 					
-					System.out.println("arepas");
-					
-					
 					pos = gson.fromJson(line, Posicion.class);
 					
 					pos.getMsn();
@@ -119,7 +118,13 @@ public class TCPSingleton extends Thread{
 					break;
 					
 				case "color":
-					main.colors(rs, gs, bs);
+					
+					color = gson.fromJson(line, Color.class);
+					
+					main.colors(rs *= (int) Math.random()*255, gs *= (int) Math.random()*255, bs *= (int) Math.random()*255);
+					System.out.println(""+rs);
+					System.out.println(""+gs);
+					System.out.println(""+bs);
 					break;
 					
 				}

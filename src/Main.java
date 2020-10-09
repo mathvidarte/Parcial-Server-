@@ -53,6 +53,7 @@ public class Main extends PApplet {
 		g = (int)random(0,255);
 		b = (int)random(0,255);
 		
+		
 	}
 	
 	public void draw () {
@@ -79,6 +80,9 @@ public class Main extends PApplet {
 		r = rs;
 		g = gs;
 		b = bs;
+		System.out.println(""+r);
+		System.out.println(""+g);
+		System.out.println(""+b);
 	}
 	
 	/*public void initServer () {
